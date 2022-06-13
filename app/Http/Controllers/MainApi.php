@@ -10,7 +10,8 @@ class MainApi extends Controller
 
     public function index() {
         return response()->json([
-            "message" => "Welcome to Main Cluster API Controller"
+            "message" => "Welcome to Main Cluster API Controller",
+            "by" => "Dida Prasetyo Rahmat si ganteng :)"
         ], 200);
     }
 
