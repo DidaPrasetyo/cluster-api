@@ -20,7 +20,7 @@ class ModelApi extends Model
 
     public static function getKota()
     {
-        $data = DB::table('kota');
+        $data = DB::table('Kota');
 
         return $data->get();
     }
@@ -51,8 +51,8 @@ class ModelApi extends Model
     public static function getAllByKota($tb_name)
     {
         $data = DB::table($tb_name)
-                 ->join('mata_pelajaran', 'mata_pelajaran.id', '=', $tb_name.'.id_mapel')
-                 ->select($tb_name.'.*', 'mata_pelajaran.nama as mapel')
+                 ->join('Mata_Pelajaran', 'Mata_Pelajaran.id', '=', $tb_name.'.id_mapel')
+                 ->select($tb_name.'.*', 'Mata_Pelajaran.nama as mapel')
                  ->orderBy('nrp');
 
         return $data->get();
