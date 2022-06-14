@@ -35,6 +35,6 @@ class MainApi extends Controller
 
     public function downloadData($tb_name)
     {
-        return Excel::download(new DataExport($tb_name), 'data.xlsx');
+        return Excel::download(new DataExport($tb_name), $tb_name.'.csv');
     }
 }
