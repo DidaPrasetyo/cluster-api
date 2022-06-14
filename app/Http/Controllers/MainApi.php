@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ModelApi;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 use App\Exports\DataExport;
 
 class MainApi extends Controller
@@ -33,8 +34,9 @@ class MainApi extends Controller
         , 200);
     }
 
-    public function downloadData($tb_name)
+    public function downloadData($file_name)
     {
-        return Excel::download(new DataExport($tb_name), $tb_name.'.csv');
+        // return Excel::download(new DataExport($tb_name), $tb_name.'.csv');
+        return Storage::download($file_name.'.csv');
     }
 }
