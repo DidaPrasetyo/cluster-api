@@ -18,6 +18,13 @@ class ModelApi extends Model
         return $data;
     }
 
+    public static function getKota()
+    {
+        $data = DB::table('kota');
+
+        return $data->get();
+    }
+
     public static function find($param)
     {
         $int = (int) $param;
@@ -39,5 +46,15 @@ class ModelApi extends Model
         }
         
         return $result->get();
+    }
+
+    public static function getAllByKota($tb_name)
+    {
+        $data = DB::table($tb_name)
+                 ->join('mata_pelajaran', 'mata_pelajaran.id', '=', $tb_name.'.id_mapel')
+                 ->select($tb_name.'.*', 'mata_pelajaran.nama as mapel')
+                 ->orderBy('nrp');
+
+        return $data->get();
     }
 }

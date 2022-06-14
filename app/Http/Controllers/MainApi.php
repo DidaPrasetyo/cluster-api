@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ModelApi;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DataExport;
 
 class MainApi extends Controller
 {
@@ -15,6 +17,13 @@ class MainApi extends Controller
         ], 200);
     }
 
+    public function getKota() {
+        $data = ModelApi::getKota();
+        return response()->json(
+            $data
+        , 200);
+    }
+
     public function find($param) {
         // $nilai = ModelApi::find($id_kota, $nrp)->toJson(JSON_PRETTY_PRINT);
         // return response($nilai, 200);
@@ -24,8 +33,8 @@ class MainApi extends Controller
         , 200);
     }
 
-    // public function getAllProduct() {
-    //     $product = Product::get()->toJson(JSON_PRETTY_PRINT);
-    //     return response($product, 200);
-    // }
+    public function downloadData($tb_name)
+    {
+        return Excel::download(new DataExport($tb_name), 'data.xlsx');
+    }
 }

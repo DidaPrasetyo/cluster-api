@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', 'App\Http\Controllers\MainApi@index');
 Route::get('base', 'App\Http\Controllers\MainApi@index');
+Route::get('kota', 'App\Http\Controllers\MainApi@getKota');
 Route::get('find/{param}', 'App\Http\Controllers\MainApi@find');
+Route::get('downloadData/{tb_name}', 'App\Http\Controllers\MainApi@downloadData');
